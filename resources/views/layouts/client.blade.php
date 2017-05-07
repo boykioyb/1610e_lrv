@@ -180,19 +180,6 @@
 	                    <li><a href="#">classifieds</a></li>
 	                    <li><a href="#">blogs</a></li>
 	                </ul>
-	                <select class="selectnav" id="selectnav2">
-	                    <option value="">-Navigation-</option>
-	                    <option value="#">world news</option>
-	                    <option value="#">sports</option>
-	                    <option value="#">tech</option>
-	                    <option value="#">business</option>
-	                    <option value="#">Movies</option>
-	                    <option value="#">entertainment</option>
-	                    <option value="#">culture</option>
-	                    <option value="#">Books</option>
-	                    <option value="#">classifieds</option>
-	                    <option value="#">blogs</option>
-	                </select>
 	            </div>
 	            <div class="copyright_text">
 	                <p>Copyright © 2045 The News Reporter Inc. All rights reserved | Design by <a target="_blank" rel="nofollow" href="#">Rafi MD</a></p>
@@ -207,16 +194,7 @@
 	<script type="text/javascript" src="{{asset('client-assets/js/jquery.bxslider.js')}}"></script> 
 	<script type="text/javascript" src="{{asset('client-assets/js/selectnav.min.js')}}"></script> 
 	<script type="text/javascript">
-	selectnav('nav', {
-	    label: '-Navigation-',
-	    nested: true,
-	    indent: '-'
-	});
-	selectnav('f_menu', {
-	    label: '-Navigation-',
-	    nested: true,
-	    indent: '-'
-	});
+	
 	$('.bxslider').bxSlider({
 	    mode: 'fade',
 	    captions: true
