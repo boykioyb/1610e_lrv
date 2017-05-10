@@ -39,7 +39,9 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapWebRoutes();
 
-        //
+        // ThienTH 2017-05-10
+        $this->mapDashboardRoutes();
+
     }
 
     /**
@@ -69,5 +71,20 @@ class RouteServiceProvider extends ServiceProvider
              ->middleware('api')
              ->namespace($this->namespace)
              ->group(base_path('routes/api.php'));
+    }
+
+    /**
+     * Define the "dashboard" routes for the application.
+     *
+     * These routes are typically stateless.
+     *
+     * @return void
+     */
+    protected function mapDashboardRoutes()
+    {
+        Route::prefix('dashboard')
+             ->middleware('web')
+             ->namespace($this->namespace)
+             ->group(base_path('routes/dashboard.php'));
     }
 }
