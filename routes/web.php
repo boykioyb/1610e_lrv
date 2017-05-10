@@ -14,4 +14,7 @@
 Route::get('/', function () {
     return view('client.homepage');
 });
+Route::get('dashboard', function(){
+	return view('layouts.admin');
+});
 
