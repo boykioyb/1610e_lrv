@@ -12,7 +12,6 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('client.homepage');
 });
 
-Route::get('1610', 'Client\HomeController@index');
