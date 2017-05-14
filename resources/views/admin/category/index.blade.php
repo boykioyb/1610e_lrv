@@ -21,7 +21,7 @@
 	      <td>{{$element->name}}</td>
 	      <td>{{$element->parent_id}}</td>
 	      <td>
-	      	<a href="#" class="btn btn-info btn-xs">
+	      	<a href="{{ route('cate.update', ['id' => $element->id]) }}" class="btn btn-info btn-xs">
 	      		<i class="fa fa-pencil"></i> Update
 	      	</a>
 	      	<a href="{{route('cate.destroy', ['id' => $element->id])}}" class="btn btn-danger btn-xs">

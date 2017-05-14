@@ -57,4 +57,53 @@ class CategoryController extends Controller
     	// 3. Generate view form
     	return view('admin.category.form', compact('model', 'cates'));
     }
+
+	/**
+	 * update category form
+	 * @author ThienTH
+	 * @date 2017-05-14
+	 * @return view - form
+	 */
+    public function update($id)
+    {
+    	// 1. get model by id
+    	$model = Category::find($id);
+    	if($model == null){
+    		return redirect(route('cate.list'));
+    	}
+    	
+    	// 2. Get all category to set parent id of new category
+    	$cates = Category::all();
+
+    	// 3. Generate view form
+    	return view('admin.category.form', compact('model', 'cates'));
+    }
+
+	/**
+	 * save (insert/update) category
+	 * @author ThienTH
+	 * @date 2017-05-14
+	 * @return redirect
+	 */
+    public function save(Request $request)
+    {
+    	// 1. get form id value
+    	$id = $request->input('id');
+    	if($id == null){
+			// 2. if id = null => case insert => new model
+    		$model = new Category();
+    	}else{
+    		// 2.1 if id != null => case update => find pbject from db by id
+    		$model = Category::find($id);
+    	}
+
+    	// 3. fill form data to model object
+    	$model->fill($request->all());
+    	
+    	// 4. Save model
+    	$model->save();
+
+    	// 5. Redirect to category list
+    	return redirect(route('cate.list'));
+    }
 }
