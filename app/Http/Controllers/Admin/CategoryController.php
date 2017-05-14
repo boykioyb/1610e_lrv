@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use Illuminate\Validation\Rule;
+use App\Http\Requests\CategoryRequest;
 
 class CategoryController extends Controller
 {
@@ -85,10 +87,22 @@ class CategoryController extends Controller
 	 * @date 2017-05-14
 	 * @return redirect
 	 */
-    public function save(Request $request)
+    public function save(CategoryRequest $request)
     {
     	// 1. get form id value
     	$id = $request->input('id');
+
+    	/*$this->validate($request, [
+    			'name'=>[
+    				"required",
+	    			Rule::unique('categories')->ignore($id)
+    			]
+    		],
+    		[
+    			'name.required' => 'Name is required!',
+    			'name.unique' => 'Category name should be unique!'
+			]);*/
+    	
     	if($id == null){
 			// 2. if id = null => case insert => new model
     		$model = new Category();
@@ -96,6 +110,7 @@ class CategoryController extends Controller
     		// 2.1 if id != null => case update => find pbject from db by id
     		$model = Category::find($id);
     	}
+    	
 
     	// 3. fill form data to model object
     	$model->fill($request->all());

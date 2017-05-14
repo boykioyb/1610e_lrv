@@ -8,6 +8,10 @@
 	<div class="form-group">
       	<label for="name">Category name</label>
       	<input type="text" class="form-control" value="{{$model->name}}" id="name" name="name" placeholder="Enter category name">
+      	@if(asset($errors->first('name')))
+      		<span class="text-danger">{{$errors->first('name')}}</span>
+      	@endif
+      	
     </div>
 	<div class="form-group">
       	<label for="parent_id">Parent</label>
