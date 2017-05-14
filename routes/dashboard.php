@@ -7,6 +7,8 @@ Route::get('/', function(){
 Route::group(['prefix' => 'categories'], function(){
 	
 	Route::get('/', 'Admin\CategoryController@index')->name('cate.list');
+	Route::get('remove/{id}', 'Admin\CategoryController@destroy')->name('cate.destroy');
+	Route::get('add', 'Admin\CategoryController@addNew')->name('cate.add-new');
 });
  ?>
 

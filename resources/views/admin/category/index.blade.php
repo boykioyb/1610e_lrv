@@ -9,7 +9,11 @@
       <th>ID</th>
       <th>Tên danh mục</th>
       <th>Danh mục cha</th>
-      <th></th>
+      <th>
+        <a href="{{route('cate.add-new')}}" class="btn btn-success btn-xs">
+          <i class="fa fa-plus"></i> Add new
+        </a>
+      </th>
     </tr>
     @foreach ($cates as $element)
     	<tr>
@@ -20,7 +24,7 @@
 	      	<a href="#" class="btn btn-info btn-xs">
 	      		<i class="fa fa-pencil"></i> Update
 	      	</a>
-	      	<a href="#" class="btn btn-danger btn-xs">
+	      	<a href="{{route('cate.destroy', ['id' => $element->id])}}" class="btn btn-danger btn-xs">
 	      		<i class="fa fa-remove"></i> Remove
 	      	</a>
 	      </td>
