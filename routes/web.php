@@ -13,10 +13,18 @@
 
 Route::get('/', function () {
     return view('client.homepage');
-});
-Route::get('login', function(){
+})->name('homepage');
+
+Route::get('login', function($msg = null){
 	return view('admin.auth.login');
 })->name('login');
+
+Route::post('login', 'Auth\LoginController@postLogin')->name('login.post');
+
+Route::get('logout', function(){
+	\Auth::logout();
+	return redirect(route('login'));
+})->name('logout');
 
 
 
