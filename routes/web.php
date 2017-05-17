@@ -14,3 +14,11 @@
 Route::get('/', function () {
     return view('client.homepage');
 });
+Route::get('login', function(){
+	return view('admin.auth.login');
+})->name('login');
+
+
+
+
+
