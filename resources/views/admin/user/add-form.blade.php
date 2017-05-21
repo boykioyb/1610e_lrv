@@ -1,19 +1,29 @@
 @extends('layouts.admin')
 @section('title', 'Add new user')
 @section('content')
-<form action="" method="get" novalidate enctype="multipart/form-data">
+<form method="post" novalidate enctype="multipart/form-data">
+  {{csrf_field()}}
   <div class="col-md-6">
     <div class="form-group">
       <label for="email">Email: </label>
       <input autofocus type="email" class="form-control" name="email" id="email" placeholder="Email...">
+      @if(asset($errors->first('email')))
+          <span class="text-danger">{{$errors->first('email')}}</span>
+        @endif
     </div>
     <div class="form-group">
       <label for="password">Password: </label>
       <input type="password" class="form-control" name="password" id="password" placeholder="Password...">
     </div>
+    @if(asset($errors->first('password')))
+          <span class="text-danger">{{$errors->first('password')}}</span>
+        @endif
     <div class="form-group">
       <label for="cfpassword">Confirm Password: </label>
       <input type="password" class="form-control" name="cfpassword" id="cfpassword" placeholder="Confirm Password...">
+      @if(asset($errors->first('cfpassword')))
+          <span class="text-danger">{{$errors->first('cfpassword')}}</span>
+        @endif
     </div>
     <div class="form-group">
       <label for="role">User role: </label>
@@ -35,6 +45,9 @@
     <div class="form-group">
       <label for="username">User name:</label>
       <input type="text" name="name" id="username" placeholder="User name" class="form-control">
+      @if(asset($errors->first('name')))
+          <span class="text-danger">{{$errors->first('name')}}</span>
+        @endif
     </div>
   </div>
   <div class="col-md-12 text-right">

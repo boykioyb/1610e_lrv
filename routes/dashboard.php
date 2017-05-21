@@ -17,6 +17,7 @@ Route::group(['middleware' => 'auth'], function(){
 	// User management
 	Route::group(['prefix' => 'user'], function(){
 		Route::get('add-user', 'Admin\UserController@add')->name('user.add');
+		Route::post('add-user', 'Admin\UserController@saveNewUser');
 	});
 });
 
