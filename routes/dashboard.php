@@ -13,6 +13,11 @@ Route::group(['middleware' => 'auth'], function(){
 		Route::get('update/{id}', 'Admin\CategoryController@update')->name('cate.update');
 		Route::post('save', 'Admin\CategoryController@save')->name('cate.save');
 	});
+
+	// User management
+	Route::group(['prefix' => 'user'], function(){
+		Route::get('add-user', 'Admin\UserController@add')->name('user.add');
+	});
 });
 
  ?>

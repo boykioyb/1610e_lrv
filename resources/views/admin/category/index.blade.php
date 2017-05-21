@@ -19,7 +19,7 @@
     	<tr>
 	      <td>{{$element->id}}</td>
 	      <td>{{$element->name}}</td>
-	      <td>{{$element->parent_id}}</td>
+	      <td>{{$element->parentName()}}</td>
 	      <td>
 	      	<a href="{{ route('cate.update', ['id' => $element->id]) }}" class="btn btn-info btn-xs">
 	      		<i class="fa fa-pencil"></i> Update
