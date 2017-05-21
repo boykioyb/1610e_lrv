@@ -622,5 +622,8 @@
 <!-- <script src="{{asset('admin-assets/js/pages/dashboard.js')}}"></script> -->
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('admin-assets/js/demo.js')}}"></script>
+@section('js')
+
+@show
 </body>
 </html>
