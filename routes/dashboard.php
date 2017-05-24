@@ -5,7 +5,7 @@ Route::group(['middleware' => 'auth'], function(){
 		return view('layouts.admin');
 	})->name('dashboard');
 
-	Route::group(['prefix' => 'categories'], function(){
+	Route::group(['prefix' => 'categories', 'middleware' => 'isModerator'], function(){
 		
 		Route::get('/', 'Admin\CategoryController@index')->name('cate.list');
 		Route::get('remove/{id}', 'Admin\CategoryController@destroy')->name('cate.destroy');

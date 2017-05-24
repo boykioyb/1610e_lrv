@@ -26,7 +26,9 @@ Route::get('logout', function(){
 	return redirect(route('login'));
 })->name('logout');
 
-
+Route::get('not-found', function(){
+	return view('not-found');
+})->name('error.404');
 
 
 
