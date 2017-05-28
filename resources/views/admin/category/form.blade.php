@@ -2,6 +2,11 @@
 @section('title', 'New category')
 
 @section('content')
+
+@php
+  $tree = get_options($cates, 0, "", $model->id);
+  
+@endphp
 <form action="{{ route('cate.save') }}" method="post" class="col-sm-6 col-sm-offset-3 form" novalidate>
 	{{csrf_field()}}
 	<input type="hidden" name="id" value="{{$model->id}}">
@@ -17,15 +22,10 @@
       	<label for="parent_id">Parent</label>
       	<select name="parent_id" class="form-control">
       		<option value="0">---Select a category---</option>
-      		@foreach ($cates as $element)
-      			<option value="{{$element->id}}" 
-      					@if($model->parent_id == $element->id) 
-      						selected 
-  						@endif
-				>
-      				{{$element->name}}
-      			</option>
-      		@endforeach
+      		@foreach($tree as $key => $val) {
+              <option value="{{substr($key, 1)}}">{{$val}}</option>";
+          }
+          @endforeach
       	</select>
     </div>
     <div class="form-group text-center">
