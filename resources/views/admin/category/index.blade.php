@@ -16,6 +16,7 @@
       </th>
     </tr>
     @foreach ($cates as $element)
+      
     	<tr>
 	      <td>{{$element->id}}</td>
 	      <td>{{$element->name}}</td>

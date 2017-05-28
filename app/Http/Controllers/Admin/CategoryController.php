@@ -18,8 +18,20 @@ class CategoryController extends Controller
 	 */
     public function index()
     {
+        // 1. Get all cates
     	$cates = Category::all();
+
+        // 2. Get list name
+        $nameList = get_options($cates);
         
+        for ($i = 0; $i < count($cates); $i++) {
+            foreach ($nameList as $key => $value) {
+                if("x".$cates[$i]->id == $key){
+                    $cates[$i]->name = $value;
+                }
+            }
+        }
+
     	return view('admin.category.index', compact('cates'));
     }
 
@@ -34,6 +46,13 @@ class CategoryController extends Controller
     	// 1. Check category id is existed or not
     	$cate = Category::find($id);
     	if($cate != null){
+            // 1.1 Set current cate's childs parent_id to this parent_id
+            $childs = Category::where('parent_id', $cate->id)->get();
+            foreach ($childs as $key => $value) {
+                $value->parent_id = $cate->parent_id;
+                $value->save();
+            }
+
     		// 2. Delete record from database
     		$cate->delete();
     		// $cate->Category::find($id)->destroy();
