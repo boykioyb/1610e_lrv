@@ -23,7 +23,7 @@
       	<select name="parent_id" class="form-control">
       		<option value="0">---Select a category---</option>
       		@foreach($tree as $key => $val) {
-              <option value="{{substr($key, 1)}}">{{$val}}</option>";
+              <option @if(substr($key, 1) == $model->parent_id) selected @endif value="{{substr($key, 1)}}">{{$val}}</option>";
           }
           @endforeach
       	</select>
