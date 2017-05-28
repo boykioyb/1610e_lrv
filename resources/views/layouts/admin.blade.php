@@ -348,7 +348,23 @@
               <a href="{{route('cate.list')}}"><i class="fa fa-circle-o"></i> Danh sách danh mục</a>
             </li>
             <li>
-              <a href="#"><i class="fa fa-circle-o"></i> Thêm mới danh mục</a>
+              <a href="{{ route('cate.add-new') }}"><i class="fa fa-circle-o"></i> Thêm mới danh mục</a>
+            </li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-file-word-o"></i> <span>Bài viết</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="active">
+              <a href="{{route('cate.list')}}"><i class="fa fa-circle-o"></i> Danh sách bài viết</a>
+            </li>
+            <li>
+              <a href="{{ route('cate.add-new') }}"><i class="fa fa-circle-o"></i> Thêm mới bài viết</a>
             </li>
           </ul>
         </li>
