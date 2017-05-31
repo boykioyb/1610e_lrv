@@ -8,7 +8,7 @@ use App\Models\Category;
 use App\Models\Post;
 class PostController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
     	// 1. Get all cates
     	$cates = Category::all();
 
@@ -22,9 +22,30 @@ class PostController extends Controller
                 }
             }
         }
+        if(!$request->has('keyword') && !$request->has('cate')){
 
-        $posts = Post::all();
+            $posts = Post::all();
+        }else{
+            if($request->has('keyword')){
+                $keyword = $request->input('keyword');
+                $query = Post::where('title', 'like', "%$keyword%");
+            }
 
-        return view('admin.posts.index', compact('cates', 'posts'));
+            if($request->has('cate')){
+                $cateId = $request->input('cate');
+                if(!isset($query)){
+                    $query = Post::where('cate_id', $cateId);
+                }else{
+                    $query->where('cate_id', $cateId);
+                }
+            }
+            
+            $posts = $query->get();
+
+        }
+        return response()->json($posts);
+        // dd($posts);
+
+        // return view('admin.posts.index', compact('cates', 'posts'));
     }
 }
