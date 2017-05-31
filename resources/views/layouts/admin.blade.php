@@ -361,7 +361,7 @@
           </a>
           <ul class="treeview-menu">
             <li class="active">
-              <a href="{{route('cate.list')}}"><i class="fa fa-circle-o"></i> Danh sách bài viết</a>
+              <a href="{{route('post.list')}}"><i class="fa fa-circle-o"></i> Danh sách bài viết</a>
             </li>
             <li>
               <a href="{{ route('cate.add-new') }}"><i class="fa fa-circle-o"></i> Thêm mới bài viết</a>
