@@ -14,6 +14,10 @@ Route::group(['middleware' => 'auth'], function(){
 		Route::post('save', 'Admin\CategoryController@save')->name('cate.save');
 	});
 
+	Route::group(['prefix' => 'posts'], function(){
+		Route::get('/', 'Admin\PostController@index')->name('post.list');
+	});
+
 	// User management
 	Route::group(['prefix' => 'user'], function(){
 		Route::get('add-user', 'Admin\UserController@add')->name('user.add');
