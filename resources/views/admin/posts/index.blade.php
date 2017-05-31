@@ -9,13 +9,17 @@
         <select class="form-control" name="cate">
           <option value="">Select All Category</option>
           @foreach ($cates as $element)
-            <option value="{{$element->id}}">{{$element->name}}</option>
+            @php
+              $selected = $element->id == $searchCateId ? "selected" : "";
+            @endphp
+            <option {{$selected}} value="{{$element->id}}">{{$element->name}}</option>
+            
           @endforeach
         </select>
       </div> 
       <div class="col-md-5 form-group">
         <div class="col-md-10 relative">
-          <input type="text" name="keyword" class="form-control" placeholder="Finding here....">
+          <input type="text" name="keyword" class="form-control" placeholder="Finding here...." value="{{$searchKeyword}}">
           <button type="submit" class="add-on-input btn btn-sm btn-success">
             <i class="fa fa-search" aria-hidden="true"></i>
           </button>

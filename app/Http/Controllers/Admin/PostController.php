@@ -44,6 +44,8 @@ class PostController extends Controller
 
         }
 
-        return view('admin.posts.index', compact('cates', 'posts'));
+        $searchCateId = $request->input('cate');
+        $searchKeyword = $request->input('keyword');
+        return view('admin.posts.index', compact('cates', 'posts', 'searchCateId', 'searchKeyword'));
     }
 }
