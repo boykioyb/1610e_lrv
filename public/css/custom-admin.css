@@ -1,0 +1,8 @@
+.relative{
+	position: relative;
+}
+button.add-on-input{
+	position: absolute;
+    top: 2px;
+    right: 17px;
+}

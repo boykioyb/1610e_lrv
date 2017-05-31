@@ -43,9 +43,7 @@ class PostController extends Controller
             $posts = $query->get();
 
         }
-        return response()->json($posts);
-        // dd($posts);
 
-        // return view('admin.posts.index', compact('cates', 'posts'));
+        return view('admin.posts.index', compact('cates', 'posts'));
     }
 }
