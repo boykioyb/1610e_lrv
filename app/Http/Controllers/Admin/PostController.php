@@ -44,6 +44,7 @@ class PostController extends Controller
                 }
                 $customUrl .= 'cate=' . $cateId;
             }
+
             $posts = $query->paginate(2);
             $posts->withPath($customUrl);
 
@@ -52,5 +53,27 @@ class PostController extends Controller
         $searchCateId = $request->input('cate');
         $searchKeyword = $request->input('keyword');
         return view('admin.posts.index', compact('cates', 'posts', 'searchCateId', 'searchKeyword'));
+    }
+    public function create(){
+        // 1. Create new model
+    	$model = new Post();
+    	
+    	// 2. Get all category to set parent id of new category
+    	$cates = Category::all();
+        $nameList = get_options($cates);
+        
+        for ($i = 0; $i < count($cates); $i++) {
+            foreach ($nameList as $key => $value) {
+                if("x".$cates[$i]->id == $key){
+                    $cates[$i]->name = $value;
+                }
+            }
+        }
+
+    	// 3. Generate view form
+    	return view('admin.posts.form', compact('model', 'cates'));
+    }
+    public function save(Request $request){
+        dd($request->all());
     }
 }

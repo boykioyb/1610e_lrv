@@ -36,7 +36,7 @@
       <th width="400">Tên bài viết</th>
       <th>Tên danh mục</th>
       <th>
-        <a href="{{route('cate.add-new')}}" class="btn btn-success btn-xs">
+        <a href="{{route('post.create')}}" class="btn btn-success btn-xs">
           <i class="fa fa-plus"></i> Add new
         </a>
       </th>
