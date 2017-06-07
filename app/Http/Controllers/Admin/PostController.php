@@ -26,21 +26,26 @@ class PostController extends Controller
 
             $posts = Post::paginate(DEFAULT_PAGE_SIZE);
         }else{
+            $customUrl = "";
             if($request->has('keyword')){
                 $keyword = $request->input('keyword');
                 $query = Post::where('title', 'like', "%$keyword%");
+                $customUrl .= '?keyword=' . $keyword;
             }
 
             if($request->has('cate')){
                 $cateId = $request->input('cate');
                 if(!isset($query)){
                     $query = Post::where('cate_id', $cateId);
+                    $customUrl .= "?";
                 }else{
                     $query->where('cate_id', $cateId);
+                    $customUrl .= "&";
                 }
+                $customUrl .= 'cate=' . $cateId;
             }
-            
-            $posts = $query->paginate(DEFAULT_PAGE_SIZE);
+            $posts = $query->paginate(2);
+            $posts->withPath($customUrl);
 
         }
 
