@@ -60,6 +60,11 @@
 	      </td>
 	    </tr>
     @endforeach
+    <tr>
+      <td colspan="5" class="text-center">
+        {!! $posts->links() !!}
+      </td>
+    </tr>
   </tbody>
   </table>
 </div>

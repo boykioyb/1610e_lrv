@@ -24,7 +24,7 @@ class PostController extends Controller
         }
         if(!$request->has('keyword') && !$request->has('cate')){
 
-            $posts = Post::all();
+            $posts = Post::paginate(DEFAULT_PAGE_SIZE);
         }else{
             if($request->has('keyword')){
                 $keyword = $request->input('keyword');
@@ -40,7 +40,7 @@ class PostController extends Controller
                 }
             }
             
-            $posts = $query->get();
+            $posts = $query->paginate(DEFAULT_PAGE_SIZE);
 
         }
 

@@ -22,7 +22,8 @@
             "App\\": "app/"
         },
         "files": [
-            "custom-helper/Utils.php"
+            "custom-helper/Utils.php",
+            "constant/App_Constant.php"
         ]
     },
     "autoload-dev": {
