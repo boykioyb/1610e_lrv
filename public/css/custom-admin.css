@@ -9,3 +9,8 @@ button.add-on-input{
 .image-preview{
     display: block;
 }
+.add-on-input-post-form{
+	position: absolute;
+    top: 27px;
+    right: 2px;
+}

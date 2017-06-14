@@ -6,13 +6,20 @@
 <form action="{{ route('post.save') }}" method="post" class="form" enctype="multipart/form-data" novalidate>
 	{{csrf_field()}}
 	<input type="hidden" name="id" value="{{$model->id}}">
-	<div class="form-group">
-      	<label for="title">Title <span class="text-danger">*</span></label>
-      	<input type="text" class="form-control" value="{{$model->title}}" id="title" name="title" placeholder="Enter post title">
-      	@if(asset($errors->first('title')))
-      		<span class="text-danger">{{$errors->first('title')}}</span>
+  <div class="form-group">
+        <label for="title">Title <span class="text-danger">*</span></label>
+        <input type="text" class="form-control" value="{{$model->title}}" id="title" name="title" placeholder="Enter post title">
+        @if(asset($errors->first('title')))
+          <span class="text-danger">{{$errors->first('title')}}</span>
+        @endif
+    </div>
+	<div class="form-group relative">
+      	<label for="slug">URL <span class="text-danger">*</span></label>
+      	<input type="text" class="form-control" value="{{$model->title}}" id="slug" name="slug" placeholder="Post slug">
+        <button type="button" class="add-on-input-post-form btn btn-sm btn-success">Generate slug</button>
+      	@if(asset($errors->first('slug')))
+      		<span class="text-danger">{{$errors->first('slug')}}</span>
       	@endif
-      	
     </div>
 	<div class="form-group">
       	<label for="cate_id">Category</label>
@@ -31,14 +38,14 @@
 	<div class="form-group">
 		<label for="feature_image">Feature Image</label>
 		<input type="file" name="feature_image" id="feature_image"> 
-		@if(asset($errors->first('feature_image')))
+		    @if(asset($errors->first('feature_image')))
       		<span class="text-danger">{{$errors->first('feature_image')}}</span>
       	@endif
 	</div>
     <div class="form-group ">
 		<label for="short_description">Short Description <span class="text-danger">*</span></label>
         <textarea class="form-control" name="short_description" id="short_description" rows="5">{{$model->short_description}}</textarea>
-		@if(asset($errors->first('short_description')))
+		    @if(asset($errors->first('short_description')))
       		<span class="text-danger">{{$errors->first('short_description')}}</span>
       	@endif
     </div>

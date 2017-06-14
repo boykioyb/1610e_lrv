@@ -9,6 +9,8 @@ class Category extends Model
     protected $table = 'categories';
     protected $fillable = ['name', 'parent_id'];
 
+    public static $entity_type = ENTITY_CATEGORY;
+
     // Get parent name of current object
     public function parentName()
     {

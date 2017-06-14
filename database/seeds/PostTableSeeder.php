@@ -18,7 +18,7 @@ class PostTableSeeder extends Seeder
             $posts[] = [
                 'title' => $faker->text($maxNbChars = 100),
                 'short_description' => $faker->text($maxNbChars = 200),
-                'description' => $faker->text($maxNbChars = 200),
+                // 'description' => $faker->text($maxNbChars = 200),
                 'content' => $faker->text($maxNbChars = 430),
                 'feature_image' => $faker->imageUrl($width = 640, $height = 480),
                 'cate_id' => rand(3, 8),
