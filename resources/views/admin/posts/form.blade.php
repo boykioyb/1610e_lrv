@@ -23,7 +23,11 @@
           @endforeach
       	</select>
     </div>
-	<div class="image-preview"></div>
+	<div class="image-preview">
+    @if($model->feature_image)
+      <img width="100" src="{{asset($model->feature_image)}}" alt=""> 
+    @endif
+  </div>
 	<div class="form-group">
 		<label for="feature_image">Feature Image</label>
 		<input type="file" name="feature_image" id="feature_image"> 
@@ -33,14 +37,14 @@
 	</div>
     <div class="form-group ">
 		<label for="short_description">Short Description <span class="text-danger">*</span></label>
-        <textarea class="form-control" name="short_description" id="short_description" rows="5"></textarea>
+        <textarea class="form-control" name="short_description" id="short_description" rows="5">{{$model->short_description}}</textarea>
 		@if(asset($errors->first('short_description')))
       		<span class="text-danger">{{$errors->first('short_description')}}</span>
       	@endif
     </div>
     <div class="form-group">
 		<label for="content">Content <span class="text-danger">*</span></label>
-        <textarea class="form-control" name="content" id="content" rows="10"></textarea>
+        <textarea class="form-control" name="content" id="content" rows="10">{{$model->content}}</textarea>
 		@if(asset($errors->first('content')))
       		<span class="text-danger">{{$errors->first('content')}}</span>
       	@endif

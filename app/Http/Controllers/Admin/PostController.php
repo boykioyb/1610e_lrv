@@ -62,18 +62,37 @@ class PostController extends Controller
     	// 2. Get all category to set parent id of new category
     	$cates = Category::all();
         $nameList = get_options($cates);
+        $cates = self::getListCateName($cates, $nameList);
         
-        for ($i = 0; $i < count($cates); $i++) {
-            foreach ($nameList as $key => $value) {
-                if("x".$cates[$i]->id == $key){
-                    $cates[$i]->name = $value;
-                }
-            }
-        }
-
     	// 3. Generate view form
     	return view('admin.posts.form', compact('model', 'cates'));
     }
+
+    public function update($id){
+        // 1. Create new model
+        $model = Post::find($id);
+        if(!$model){
+            return redirect(route('post.list'));
+        }
+        // 2. Get all category to set parent id of new category
+        $cates = Category::all();
+        $nameList = get_options($cates);
+        
+        $cates = self::getListCateName($cates, $nameList);
+
+        // 3. Generate view form
+        return view('admin.posts.form', compact('model', 'cates'));
+    }
+
+    public function destroy($id){
+        $model = Post::find($id);
+        if($model){
+            $model->delete();
+        }
+
+        return redirect(route('post.list'));
+    }
+
     public function save(PostFormRequest $request){
         if($request->input('id') > 0){
             $model = Post::find($request->input('id'));
@@ -93,5 +112,17 @@ class PostController extends Controller
         }catch(\Exception $ex){
             throw $ex;
         }
+    }
+
+    private function getListCateName($cates, $nameList){
+        for ($i = 0; $i < count($cates); $i++) {
+            foreach ($nameList as $key => $value) {
+                if("x".$cates[$i]->id == $key){
+                    $cates[$i]->name = $value;
+                }
+            }
+        }
+
+        return $cates;
     }
 }
