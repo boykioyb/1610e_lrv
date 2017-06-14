@@ -7,7 +7,7 @@
 	{{csrf_field()}}
 	<input type="hidden" name="id" value="{{$model->id}}">
 	<div class="form-group">
-      	<label for="title">Title</label>
+      	<label for="title">Title <span class="text-danger">*</span></label>
       	<input type="text" class="form-control" value="{{$model->title}}" id="title" name="title" placeholder="Enter post title">
       	@if(asset($errors->first('title')))
       		<span class="text-danger">{{$errors->first('title')}}</span>
@@ -29,13 +29,19 @@
 		<input type="file" name="feature_image" id="feature_image"> 
 	</div>
     <div class="form-group ">
-		<label for="short_description">Short Description</label>
+		<label for="short_description">Short Description <span class="text-danger">*</span></label>
         <textarea class="form-control" name="short_description" id="short_description" rows="5"></textarea>
+		@if(asset($errors->first('short_description')))
+      		<span class="text-danger">{{$errors->first('short_description')}}</span>
+      	@endif
     </div>
     <div class="form-group">
-		<label for="content">Content</label>
+		<label for="content">Content <span class="text-danger">*</span></label>
         <textarea class="form-control" name="content" id="content" rows="10"></textarea>
-    </div>
+		@if(asset($errors->first('content')))
+      		<span class="text-danger">{{$errors->first('content')}}</span>
+      	@endif
+	</div>
     <div class="form-group text-center">
     	<button type="submit" class="btn btn-xs btn-success">
     		<i class="fa fa-save"></i> Save

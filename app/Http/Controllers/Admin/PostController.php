@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Post;
+use App\Http\Requests\PostFormRequest;
 class PostController extends Controller
 {
     public function index(Request $request){
@@ -73,7 +74,7 @@ class PostController extends Controller
     	// 3. Generate view form
     	return view('admin.posts.form', compact('model', 'cates'));
     }
-    public function save(Request $request){
+    public function save(PostFormRequest $request){
         dd($request->all());
     }
 }
