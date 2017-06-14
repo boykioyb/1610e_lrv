@@ -3,7 +3,7 @@
 
 @section('content')
 
-<form action="{{ route('post.save') }}" method="post" class="form" novalidate>
+<form action="{{ route('post.save') }}" method="post" class="form" enctype="multipart/form-data" novalidate>
 	{{csrf_field()}}
 	<input type="hidden" name="id" value="{{$model->id}}">
 	<div class="form-group">
@@ -27,6 +27,9 @@
 	<div class="form-group">
 		<label for="feature_image">Feature Image</label>
 		<input type="file" name="feature_image" id="feature_image"> 
+		@if(asset($errors->first('feature_image')))
+      		<span class="text-danger">{{$errors->first('feature_image')}}</span>
+      	@endif
 	</div>
     <div class="form-group ">
 		<label for="short_description">Short Description <span class="text-danger">*</span></label>

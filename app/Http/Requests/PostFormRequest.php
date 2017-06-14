@@ -29,7 +29,8 @@ class PostFormRequest extends FormRequest
                 Rule::unique('posts')->ignore($this->get('id'))
             ],
             'short_description' => 'required|max:200',
-            'content' => 'required'
+            'content' => 'required',
+            'feature_image' => 'image'
         ];
     }
 

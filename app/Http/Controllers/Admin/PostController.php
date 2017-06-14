@@ -83,10 +83,15 @@ class PostController extends Controller
 
         try{
             $model->fill($request->all());
+            if ($request->hasFile('feature_image')) {
+                $file = $request->file('feature_image');
+                $filename = $file->hashName();
+                $model->feature_image = $file->store('uploads');
+            }
             $model->save();
             return redirect(route('post.list'));
         }catch(\Exception $ex){
-            throw $ex->getMessage();
+            throw $ex;
         }
     }
 }

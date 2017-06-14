@@ -46,7 +46,7 @@
     	<tr>
 	      <td>{{$element->id}}</td>
         <td>
-          <img src="{{$element->feature_image}}" width="100">
+          <img src="{{asset($element->feature_image)}}" width="100">
         </td>
 	      <td>{{$element->title}}</td>
 	      <td>{{$element->parentName()}}</td>
