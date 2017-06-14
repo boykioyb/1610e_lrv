@@ -18,6 +18,8 @@ Route::group(['middleware' => 'auth'], function(){
 		Route::get('/', 'Admin\PostController@index')->name('post.list');
 		Route::get('/create', 'Admin\PostController@create')->name('post.create');
 		Route::post('/save', 'Admin\PostController@save')->name('post.save');
+		Route::get('remove/{id}', 'Admin\PostController@destroy')->name('post.destroy');
+		Route::get('update/{id}', 'Admin\PostController@update')->name('post.update');
 	});
 
 	// User management
