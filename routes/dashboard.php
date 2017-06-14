@@ -17,7 +17,7 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::group(['prefix' => 'posts'], function(){
 		Route::get('/', 'Admin\PostController@index')->name('post.list');
 		Route::get('/create', 'Admin\PostController@create')->name('post.create');
-		Route::get('/save', 'Admin\PostController@save')->name('post.save');
+		Route::post('/save', 'Admin\PostController@save')->name('post.save');
 	});
 
 	// User management
