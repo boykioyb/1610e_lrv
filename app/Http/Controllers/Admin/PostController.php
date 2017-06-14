@@ -25,7 +25,7 @@ class PostController extends Controller
         }
         if(!$request->has('keyword') && !$request->has('cate')){
 
-            $posts = Post::paginate(DEFAULT_PAGE_SIZE);
+            $posts = Post::orderBy('id', 'desc')->paginate(DEFAULT_PAGE_SIZE);
         }else{
             $customUrl = "";
             if($request->has('keyword')){
@@ -46,7 +46,7 @@ class PostController extends Controller
                 $customUrl .= 'cate=' . $cateId;
             }
 
-            $posts = $query->paginate(2);
+            $posts = $query->orderBy('id', 'desc')->paginate(2);
             $posts->withPath($customUrl);
 
         }
@@ -75,6 +75,18 @@ class PostController extends Controller
     	return view('admin.posts.form', compact('model', 'cates'));
     }
     public function save(PostFormRequest $request){
-        dd($request->all());
+        if($request->input('id') > 0){
+            $model = Post::find($request->input('id'));
+        }else{
+            $model = new Post();
+        }
+
+        try{
+            $model->fill($request->all());
+            $model->save();
+            return redirect(route('post.list'));
+        }catch(\Exception $ex){
+            throw $ex->getMessage();
+        }
     }
 }
