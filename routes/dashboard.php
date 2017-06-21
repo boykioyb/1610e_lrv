@@ -1,5 +1,5 @@
 <?php 
-
+use Illuminate\Http\Request;
 Route::group(['middleware' => 'auth'], function(){
 	Route::get('/', function(){
 		return view('layouts.admin');
@@ -21,6 +21,12 @@ Route::group(['middleware' => 'auth'], function(){
 		Route::get('remove/{id}', 'Admin\PostController@destroy')->name('post.destroy');
 		Route::get('update/{id}', 'Admin\PostController@update')->name('post.update');
 	});
+
+	Route::post('generate-slug', function(Request $request){
+		$slug = str_slug($request->input('title'), '-');
+		$slug .= '-' . uniqid();
+		return response()->json(['slug' => $slug]);
+	})->name('generate.slug');
 
 	// User management
 	Route::group(['prefix' => 'user'], function(){

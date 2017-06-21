@@ -648,12 +648,6 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('admin-assets/js/demo.js')}}"></script>
 
- <!-- Ckeditor -->
- 
-  
-  <!-- End Ckeditor -->
-@section('js')
-
-@show
+@yield('js')
 </body>
 </html>

@@ -28,6 +28,12 @@ class PostFormRequest extends FormRequest
                 "required",
                 Rule::unique('posts')->ignore($this->get('id'))
             ],
+            'slug' => [ 
+                'required', 
+                Rule::unique("slugs")->ignore($this->get('id'), 'entity_id')->where(function ($query) {
+                      $query->where('entity_type', ENTITY_POST);
+                })
+            ],
             'short_description' => 'required|max:200',
             'content' => 'required',
             'feature_image' => 'image'

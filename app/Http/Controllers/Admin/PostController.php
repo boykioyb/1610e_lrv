@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Slug;
 use App\Http\Requests\PostFormRequest;
 class PostController extends Controller
 {
@@ -108,6 +109,17 @@ class PostController extends Controller
                 $model->feature_image = $file->store('uploads');
             }
             $model->save();
+            
+            $slugObject = Slug::where('entity_type' , $model::$entity_type)
+                                ->where('entity_id', $model->id)->first();
+            if(!$slugObject){
+                $slugObject = new Slug();
+                $slugObject->entity_type = $model::$entity_type;
+                $slugObject->entity_id = $model->id;
+            }
+            
+            $slugObject->slug = $request->input('slug');
+            $slugObject->save();
             return redirect(route('post.list'));
         }catch(\Exception $ex){
             throw $ex;

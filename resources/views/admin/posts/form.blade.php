@@ -16,7 +16,7 @@
 	<div class="form-group relative">
       	<label for="slug">URL <span class="text-danger">*</span></label>
       	<input type="text" class="form-control" value="{{$model->title}}" id="slug" name="slug" placeholder="Post slug">
-        <button type="button" class="add-on-input-post-form btn btn-sm btn-success">Generate slug</button>
+        <button type="button" id="generate-slug" class="add-on-input-post-form btn btn-sm btn-success">Generate slug</button>
       	@if(asset($errors->first('slug')))
       		<span class="text-danger">{{$errors->first('slug')}}</span>
       	@endif
@@ -70,4 +70,28 @@
     ckeditor('short_description');
     ckeditor('content');
 </script>
+@endsection
+@section('js')
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('#generate-slug').on('click', function(){
+          var title = $('#title').val();
+          $.ajax({
+            url: '{{route('generate.slug')}}',
+            method: "POST",
+            data: {
+              _token: '{{csrf_token()}}',
+              title: title
+            },
+            dataType: "JSON",
+            success: function (rp){
+              $('#slug').val(rp.slug);
+            },
+            error: function(xhr, error, msg){
+              console.log(msg);
+            }
+          });
+      });
+    });
+  </script>
 @endsection
