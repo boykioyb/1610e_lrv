@@ -33,4 +33,9 @@ class Slug extends Model
         }
         
     }
+
+    public static function removeSlug($entityType, $entityId){
+    	DB::table('slugs')->where('entity_type' , $entityType)
+                            ->where('entity_id', $entityId)->delete();
+    }
 }

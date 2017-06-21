@@ -96,6 +96,12 @@ class PostController extends Controller
             $model->delete();
         }
 
+        $slugObj = Slug::where('entity_type' , $model::$entity_type)
+                            ->where('entity_id', $model->id)->first();
+        if($slugObj){
+            Slug::removeSlug($model::$entity_type, $model->id);
+        }
+
         return redirect(route('post.list'));
     }
 
