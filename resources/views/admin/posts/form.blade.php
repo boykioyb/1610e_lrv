@@ -15,7 +15,7 @@
     </div>
 	<div class="form-group relative">
       	<label for="slug">URL <span class="text-danger">*</span></label>
-      	<input type="text" class="form-control" value="{{$model->title}}" id="slug" name="slug" placeholder="Post slug">
+      	<input type="text" class="form-control" value="{{$slug}}" id="slug" name="slug" placeholder="Post slug">
         <button type="button" id="generate-slug" class="add-on-input-post-form btn btn-sm btn-success">Generate slug</button>
       	@if(asset($errors->first('slug')))
       		<span class="text-danger">{{$errors->first('slug')}}</span>

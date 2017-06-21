@@ -60,6 +60,7 @@ class PostController extends Controller
     public function create(){
         // 1. Create new model
     	$model = new Post();
+        $slug = "";
     	
     	// 2. Get all category to set parent id of new category
     	$cates = Category::all();
@@ -67,7 +68,7 @@ class PostController extends Controller
         $cates = self::getListCateName($cates, $nameList);
         
     	// 3. Generate view form
-    	return view('admin.posts.form', compact('model', 'cates'));
+    	return view('admin.posts.form', compact('model', 'cates', 'slug'));
     }
 
     public function update($id){
@@ -76,6 +77,9 @@ class PostController extends Controller
         if(!$model){
             return redirect(route('post.list'));
         }
+        $slugObj = Slug::where('entity_type' , $model::$entity_type)
+                            ->where('entity_id', $model->id)->first();
+        $slug = $slugObj == null ? "" : $slugObj->slug;
         // 2. Get all category to set parent id of new category
         $cates = Category::all();
         $nameList = get_options($cates);
@@ -83,7 +87,7 @@ class PostController extends Controller
         $cates = self::getListCateName($cates, $nameList);
 
         // 3. Generate view form
-        return view('admin.posts.form', compact('model', 'cates'));
+        return view('admin.posts.form', compact('model', 'cates', 'slug'));
     }
 
     public function destroy($id){
