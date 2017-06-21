@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
@@ -109,17 +110,9 @@ class PostController extends Controller
                 $model->feature_image = $file->store('uploads');
             }
             $model->save();
+
+            Slug::saveSlug($model::$entity_type, $model->id, $request->input('slug'));
             
-            $slugObject = Slug::where('entity_type' , $model::$entity_type)
-                                ->where('entity_id', $model->id)->first();
-            if(!$slugObject){
-                $slugObject = new Slug();
-                $slugObject->entity_type = $model::$entity_type;
-                $slugObject->entity_id = $model->id;
-            }
-            
-            $slugObject->slug = $request->input('slug');
-            $slugObject->save();
             return redirect(route('post.list'));
         }catch(\Exception $ex){
             throw $ex;
