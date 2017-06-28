@@ -23,9 +23,6 @@
 	            <div class="top_menu floatleft">
 	                <ul>
 	                    <li><a href="{{route('homepage')}}">Home</a></li>
-	                    @foreach ($menuItems as $e)
-	                    	<li><a href="#">{{$e->name}}</a></li>
-	                    @endforeach
 	                    <li><a href="{{route('login')}}">Login</a></li>
 	                </ul>
 	            </div>
@@ -54,107 +51,16 @@
 	        </div>
 	        <div class="main_menu_area">
 	            <ul id="nav">
-	                <li><a href="#">world news</a>
-	                    <ul>
-	                        <li><a href="#">Single item</a></li>
-	                        <li><a href="#">Single item</a></li>
-	                        <li><a href="#">Single item</a>
-	                            <ul>
-	                                <li><a href="#">Single item</a></li>
-	                                <li><a href="#">Single item</a></li>
-	                                <li><a href="#">Single item</a></li>
-	                                <li><a href="#">Single item</a></li>
-	                                <li><a href="#">Single item</a></li>
-	                            </ul>
-	                        </li>
-	                        <li><a href="#">Single item</a></li>
-	                        <li><a href="#">Single item</a></li>
-	                    </ul>
-	                </li>
-	                <li><a href="#">sports</a></li>
-	                <li><a href="#">tech</a>
-	                    <ul>
-	                        <li><a href="#">Single item</a></li>
-	                        <li><a href="#">Single item</a></li>
-	                        <li><a href="#">Single item</a></li>
-	                        <li><a href="#">Single item</a></li>
-	                        <li><a href="#">Single item</a></li>
-	                    </ul>
-	                </li>
-	                <li><a href="#">business</a></li>
-	                <li><a href="#">Movies</a>
-	                    <ul>
-	                        <li><a href="#">Single item</a></li>
-	                        <li><a href="#">Single item</a></li>
-	                        <li><a href="#">Single item</a>
-	                            <ul>
-	                                <li><a href="#">Single item</a></li>
-	                                <li><a href="#">Single item</a></li>
-	                                <li><a href="#">Single item</a></li>
-	                                <li><a href="#">Single item</a></li>
-	                                <li><a href="#">Single item</a></li>
-	                            </ul>
-	                        </li>
-	                        <li><a href="#">Single item</a></li>
-	                        <li><a href="#">Single item</a></li>
-	                    </ul>
-	                </li>
-	                <li><a href="#">entertainment</a></li>
-	                <li><a href="#">culture</a></li>
-	                <li><a href="#">Books</a>
-	                    <ul>
-	                        <li><a href="#">Single item</a></li>
-	                        <li><a href="#">Single item</a></li>
-	                        <li><a href="#">Single item</a></li>
-	                        <li><a href="#">Single item</a></li>
-	                        <li><a href="#">Single item</a></li>
-	                    </ul>
-	                </li>
-	                <li><a href="#">classifieds</a></li>
-	                <li><a href="#">blogs</a></li>
+	            	@foreach ($menuItems as $e)
+                    	<li>
+                    		<a href="{{$e->getUrl()}}">{{$e->name}}</a>
+                		</li>
+                    @endforeach
 	            </ul>
 	            <select class="selectnav" id="selectnav1">
-	                <option value="">-Navigation-</option>
-	                <option value="#">world news</option>
-	                <option value="#">- Single item</option>
-	                <option value="#">- Single item</option>
-	                <option value="#">- Single item</option>
-	                <option value="#">-- Single item</option>
-	                <option value="#">-- Single item</option>
-	                <option value="#">-- Single item</option>
-	                <option value="#">-- Single item</option>
-	                <option value="#">-- Single item</option>
-	                <option value="#">- Single item</option>
-	                <option value="#">- Single item</option>
-	                <option value="#">sports</option>
-	                <option value="#">tech</option>
-	                <option value="#">- Single item</option>
-	                <option value="#">- Single item</option>
-	                <option value="#">- Single item</option>
-	                <option value="#">- Single item</option>
-	                <option value="#">- Single item</option>
-	                <option value="#">business</option>
-	                <option value="#">Movies</option>
-	                <option value="#">- Single item</option>
-	                <option value="#">- Single item</option>
-	                <option value="#">- Single item</option>
-	                <option value="#">-- Single item</option>
-	                <option value="#">-- Single item</option>
-	                <option value="#">-- Single item</option>
-	                <option value="#">-- Single item</option>
-	                <option value="#">-- Single item</option>
-	                <option value="#">- Single item</option>
-	                <option value="#">- Single item</option>
-	                <option value="#">entertainment</option>
-	                <option value="#">culture</option>
-	                <option value="#">Books</option>
-	                <option value="#">- Single item</option>
-	                <option value="#">- Single item</option>
-	                <option value="#">- Single item</option>
-	                <option value="#">- Single item</option>
-	                <option value="#">- Single item</option>
-	                <option value="#">classifieds</option>
-	                <option value="#">blogs</option>
+	            	@foreach ($menuItems as $e)
+	            		<option value="{{$e->getUrl()}}">{{$e->name}}</option>
+                    @endforeach
 	            </select>
 	        </div>
 	        @section('slider')

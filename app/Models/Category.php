@@ -20,4 +20,22 @@ class Category extends Model
         }
         return null;
     }
+
+    /**
+     * Get category url by entity id and entity type
+     * @author ThienTH
+     * @param none
+     * @return string
+     * @date 2017-06-28 - create
+     * @date 2017-07-15 - Viet Anh - update logic at line 35
+     */
+    public function getUrl(){
+        $slug = Slug::where('entity_type', self::$entity_type)
+                        ->where('entity_id', $this->id)->first();
+        if($slug){
+            return url($slug->slug);
+        }else{
+            return url();
+        }
+    }
 }
