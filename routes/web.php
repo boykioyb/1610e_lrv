@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('client.homepage');
-})->name('homepage');
+Route::get('/', 'Client\HomeController@index')->name('homepage');
 
 Route::get('login', function($msg = null){
 	return view('admin.auth.login');

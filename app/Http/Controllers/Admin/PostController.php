@@ -93,13 +93,14 @@ class PostController extends Controller
     public function destroy($id){
         $model = Post::find($id);
         if($model){
-            $model->delete();
-        }
 
-        $slugObj = Slug::where('entity_type' , $model::$entity_type)
+            $slugObj = Slug::where('entity_type' , $model::$entity_type)
                             ->where('entity_id', $model->id)->first();
-        if($slugObj){
-            Slug::removeSlug($model::$entity_type, $model->id);
+            if($slugObj){
+                Slug::removeSlug($model::$entity_type, $model->id);
+            }
+            
+            $model->delete();
         }
 
         return redirect(route('post.list'));
@@ -121,6 +122,7 @@ class PostController extends Controller
             }
             $model->save();
 
+            // Save slug by static function
             Slug::saveSlug($model::$entity_type, $model->id, $request->input('slug'));
             
             return redirect(route('post.list'));
