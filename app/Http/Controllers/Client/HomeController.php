@@ -34,8 +34,9 @@ class HomeController extends Controller
                 return view('client.list-post', compact('cate', 'listPost'));
             case ENTITY_POST:
                 // Call function that execute logic for get content of this
-                break;
-            
+                $post = Post::find($object->entity_id);
+                $cate = Category::find($post->cate_id);
+                return view('client.detail-post', compact('cate', 'post'));
             default:
                 return view('not-found');
                 break;

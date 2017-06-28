@@ -36,11 +36,11 @@ class RouteServiceProvider extends ServiceProvider
     public function map()
     {
         $this->mapApiRoutes();
+        // ThienTH 2017-05-10
+        $this->mapDashboardRoutes();
 
         $this->mapWebRoutes();
 
-        // ThienTH 2017-05-10
-        $this->mapDashboardRoutes();
 
     }
 

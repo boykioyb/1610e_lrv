@@ -35,7 +35,7 @@ class Category extends Model
         if($slug){
             return url($slug->slug);
         }else{
-            return url();
+            return url('/');
         }
     }
 }

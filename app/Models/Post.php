@@ -19,4 +19,14 @@ class Post extends Model
         }
         return null;
     }
+    
+    public function getUrl(){
+        $slug = Slug::where('entity_type', self::$entity_type)
+                        ->where('entity_id', $this->id)->first();
+        if($slug){
+            return url($slug->slug);
+        }else{
+            return url('/');
+        }
+    }
 }
