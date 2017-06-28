@@ -12,9 +12,7 @@ class HomeController extends Controller
 	 * @return view
 	 */
     public function index(){
-    	// $roles = Role::all();
-    	// $user = "Đặng Văn Đô!!!!";
-    	// dd($roles);
+    	
     	return view('client.homepage');
     }
 }
