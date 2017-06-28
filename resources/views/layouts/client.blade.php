@@ -22,11 +22,11 @@
 	            </div>
 	            <div class="top_menu floatleft">
 	                <ul>
-	                    <li><a href="index.html">Home</a></li>
-	                    <li><a href="#">About</a></li>
-	                    <li><a href="#">Contact us</a></li>
-	                    <li><a href="#">Subscribe</a></li>
-	                    <li><a href="#">Login</a></li>
+	                    <li><a href="{{route('homepage')}}">Home</a></li>
+	                    @foreach ($menuItems as $e)
+	                    	<li><a href="#">{{$e->name}}</a></li>
+	                    @endforeach
+	                    <li><a href="{{route('login')}}">Login</a></li>
 	                </ul>
 	            </div>
 	            <div class="social_plus_search floatright">
