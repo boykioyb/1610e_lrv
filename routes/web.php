@@ -25,6 +25,7 @@ Route::get('logout', function(){
 })->name('logout');
 
 Route::get('not-found', function(){
+	return response()->json('thienth')
 	return view('not-found');
 })->name('error.404');
 
